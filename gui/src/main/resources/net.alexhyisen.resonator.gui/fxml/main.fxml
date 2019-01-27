@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  ~ This file is part of resonator.
+  ~
+  ~ resonator is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ resonator is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with resonator.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.alexhyisen.resonator.gui.MainController">
+    <VBox layoutX="20.0" layoutY="20.0" spacing="10.0">
+        <HBox spacing="10.0">
+            <Label prefWidth="80.0" text="config path" />
+            <TextField fx:id="pathTextField" prefWidth="160.0" />
+            <Button mnemonicParsing="false" onAction="#handleLoadButtonAction" prefWidth="60.0" text="load" />
+            <Button mnemonicParsing="false" onAction="#handleSaveButtonAction" prefWidth="60.0" text="save" />
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefWidth="80.0" text="delay time" />
+            <Spinner fx:id="timeSpinner" prefWidth="90.0" />
+            <ToggleButton fx:id="autoToggleButton" mnemonicParsing="false" onAction="#handleAutoToggleButtonAction" prefWidth="60.0" text="auto" />
+            <Button mnemonicParsing="false" onAction="#handleFireButtonAction" prefWidth="60.0" text="fire" />
+            <ToggleButton fx:id="linkToggleButton" mnemonicParsing="false" onAction="#handleLinkToggleButtonAction" prefWidth="60.0" text="link" />
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefWidth="80.0" text="listen port" />
+            <Spinner fx:id="portSpinner" prefWidth="90.0" />
+            <ToggleButton fx:id="watchToggleButton" mnemonicParsing="false" onAction="#handleWatchToggleButtonAction" prefWidth="60.0" text="watch" />
+        </HBox>
+        <HBox layoutX="10.0" layoutY="76.0" spacing="10.0">
+            <Label prefWidth="80.0" text="last RX time" />
+            <TextField fx:id="rxTextField" alignment="CENTER" disable="true" editable="false" prefWidth="230.0" text="error" />
+        </HBox>
+        <HBox layoutX="10.0" layoutY="109.0" spacing="10.0">
+            <Label prefWidth="80.0" text="last TX time" />
+            <TextField fx:id="txTextField" alignment="CENTER" disable="true" editable="false" prefWidth="230.0" text="error" />
+        </HBox>
+    </VBox>
+    <GridPane layoutX="350.0" layoutY="237.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="160.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+        </rowConstraints>
+        <Label text="username" />
+        <TextField fx:id="usernameTextField" GridPane.columnIndex="1" />
+        <Label text="password" GridPane.rowIndex="1" />
+        <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="broker" GridPane.rowIndex="2" />
+        <TextField fx:id="brokerTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="client" GridPane.rowIndex="3" />
+        <TextField fx:id="clientTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="topic" GridPane.rowIndex="4" />
+        <TextField fx:id="topicTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <TableView fx:id="dataTableView" layoutX="420.0" layoutY="20.0" prefHeight="170.0" prefWidth="160.0" />
+    <TextArea fx:id="patternTextArea" layoutX="20.0" layoutY="190.0" prefHeight="190.0" prefWidth="320.0" promptText="pattern" />
+    <Button layoutX="420.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleAppendSourceButtonAction" prefWidth="75.0" text="append" />
+    <Button layoutX="505.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleDeleteSourceButtonAction" prefWidth="75.0" text="delete" />
+</AnchorPane>
